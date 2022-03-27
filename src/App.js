@@ -1,21 +1,18 @@
 import './App.css';
-import MyButtonComponent from './components/Button';
-import MyAlbumImageComponent from './components/AlbumPicture'
-import MySongInfo from './components/SongInfo';
+import ListDisplay from './Song';
 
 function App() {
   return (
     <div className="App">
       <header className="App-header">
         <div className="App-title">
-          <h1>Music Player</h1>
+          <h1>MockUptify</h1>
         </div>
       </header>
       <div className="Container">
-        <MyAlbumImageComponent />
-        <MySongInfo />
-        <MyButtonComponent />
+        <ListDisplay />
       </div>
+      <footer></footer>
     </div>
   );
 }

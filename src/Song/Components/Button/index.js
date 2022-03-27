@@ -1,7 +1,7 @@
 import React from "react";
 
-const MyButtonComponent = () => (
+const SelectSong = () => (
     <button className="Btn-Select">Select</button>
 );
 
-export default MyButtonComponent;
+export default SelectSong;
