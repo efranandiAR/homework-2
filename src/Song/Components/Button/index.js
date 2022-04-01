@@ -1,7 +1,8 @@
-import React from "react";
+import {React, useState, useEffect} from "react";
 
-const SelectSong = () => (
-    <button className="Btn-Select">Select</button>
-);
+const SelectSong = ({Select}) => {
+    return (
+    <button className="Btn-Select"></button>
+)};
 
 export default SelectSong;

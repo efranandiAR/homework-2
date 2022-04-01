@@ -11,7 +11,8 @@ const SpotifyAuth = () => {
 
     const [token, setToken] = useState("");
     const [searchKey, setSearchKey] = useState("");
-    const [tracks, setStracks] = useState([]);
+    const [tracks, setTracks] = useState([]);
+    const [isSelected, setIsSelected] = useState([]);
 
 
     useEffect(() => {
@@ -22,7 +23,6 @@ const SpotifyAuth = () => {
             token = hash.substring(1).split("&").find(elem => elem.startsWith("access_token")).split("=")[1]
 
             window.location.hash = ""
-            window.localStorage.setItem("token", token)
         }
 
         setToken(token)
@@ -40,7 +40,11 @@ const SpotifyAuth = () => {
             }
         })
 
-        setStracks(data.tracks.items)
+        setTracks(data.tracks.items);
+    }
+    
+    const selectTrack = () => {
+        setIsSelected(tracks.uri);
     }
 
     return(
@@ -63,8 +67,11 @@ const SpotifyAuth = () => {
             : <div></div>
             }
             
-            <ListDisplay data={tracks
-            }/>
+            <ListDisplay 
+                data={tracks}
+                isSelected = {isSelected}
+                selectTrack = {selectTrack()}
+            />
             
         </div>
     )
