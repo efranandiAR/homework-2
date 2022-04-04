@@ -7,7 +7,9 @@ const ArtistList = ({artists}) => {
     return ArtistArray;
 }
 
-const Details = ({titleId, title, albumId, album, artist}) => (
+const Details = ({titleId, title, albumId, album, artist, uri}) => {
+
+    return (
     <ul className="SongDetails">
         <li className="SongTitle" key={titleId}>{title}</li>
         <li className="SongAlbum" key={albumId}> {album}</li>
@@ -15,7 +17,8 @@ const Details = ({titleId, title, albumId, album, artist}) => (
             <ul>{artist}</ul>
         </li>
     </ul>
-);
+    )
+};
 
 export {
     ArtistList,
