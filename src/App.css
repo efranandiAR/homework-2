@@ -41,13 +41,13 @@ header {
   height: 90px;
   max-width: 600px;
   width: 90%;
-  border: 1px solid #181818;
+  border: 1px solid #262626;
   border-radius: 6px;
   margin: 0 12px 12px 0;
   padding: 8px 16px;
   float: left;
   position: relative;
-  background-color: #181818;
+  background-color: #262626;
 }
 
 .AlbumPicture {
@@ -73,6 +73,11 @@ header {
   margin-bottom: 4px;
   font-size: 16px;
   font-weight: 500;
+}
+
+.SongTitle a {
+  text-decoration: none;
+  color: inherit;
 }
 
 .SongAlbum {

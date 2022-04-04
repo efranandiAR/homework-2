@@ -1,6 +1,5 @@
 import './App.css';
-import SpotifyAuth from './Authentication/Components';
-import ListDisplay from './Song';
+import Home from './pages/home';
 
 function App() {
   return (
@@ -11,8 +10,7 @@ function App() {
         </div>
       </header>
       <div className="Container">
-        {/* <ListDisplay /> */}
-        <SpotifyAuth/>
+        <Home/>
       </div>
       <footer></footer>
     </div>
