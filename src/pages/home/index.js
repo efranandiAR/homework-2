@@ -1,37 +1,19 @@
-import { useState, useEffect } from "react";
+import { useState } from "react";
 import axios from "axios";
 import Tracks from "../../components/Tracks";
 import PlaylistFormComponent from "../../components/PlaylistForm";
+import { useSelector } from "react-redux";
 
 export default function Home() {
-  const CLIENT_ID = "675110b87a764b42b3a51622ddaa8178";
-  const REDIRECT_URI = "http://localhost:3000/";
-  const SCOPE = "playlist-modify-private";
-  const AUTH_ENDPOINT = "https://accounts.spotify.com/authorize";
-  const RESPONSE_TYPE = "token";
-
-  const [token, setToken] = useState("");
+  const currentToken = useSelector((state) => state.token.value);
   const [searchKey, setSearchKey] = useState("");
   const [tracks, setTracks] = useState([]);
-
-  useEffect(() => {
-    const hash = window.location.hash;
-    let tokenSplit;
-
-    if (!token && hash) {
-        tokenSplit = hash.substring(1).split("&").find(elem => elem.startsWith("access_token")).split("=")[1];
-
-        window.location.hash = "";
-    }
-
-    setToken(tokenSplit);
-  }, [])
-
+  
   const searchTracks = async (e) => {
     e.preventDefault()
     const {data} = await axios.get("https://api.spotify.com/v1/search", {
       headers: {
-        Authorization: `Bearer ${token}`
+        Authorization: `Bearer ${currentToken}`
       },
       params: {
         q: searchKey,
@@ -54,22 +36,22 @@ export default function Home() {
 
   const [playlist, setPlaylist] = useState({
     title: "",
-    description:""
+    description:"",
   });
 
   const HandleOnChangePlaylist = (e) => {
-    const { field, value } = e.target;
-    setPlaylist((prevPlaylist) => ({...prevPlaylist, [field]: value }));
+    const { name, value } = e.target;
+    setPlaylist({...playlist, [name]: value });
+    console.log(playlist);
   }
 
   const AddPlaylist = async (e) => {
-		e.preventDefault();
-		const uris = isSelected.map(item => item.uri);
+		const uris = isSelected;
 		console.log(uris);
 		axios
 			.get("https://api.spotify.com/v1/me", {
 				headers: {
-					Authorization: `Bearer ${token}`,
+					Authorization: `Bearer ${currentToken}`,
 				},
 			})
 			.then(function (response) {
@@ -81,10 +63,11 @@ export default function Home() {
 							name: playlist.title,
 							description: playlist.description,
 							public: false,
+              collaborative: false,
 						},
 						{
 							headers: {
-								Authorization: `Bearer ${token}`,
+								Authorization: `Bearer ${currentToken}`,
 							},
 						}
 					)
@@ -94,7 +77,7 @@ export default function Home() {
 							{ uris: uris },
 							{
 								headers: {
-									Authorization: `Bearer ${token}`,
+									Authorization: `Bearer ${currentToken}`,
 								},
 							}
 						);
@@ -111,7 +94,7 @@ export default function Home() {
   return(
     <div>
       <div>
-        {token ?
+        {
           <div>
             <div>
               <PlaylistFormComponent 
@@ -132,15 +115,6 @@ export default function Home() {
               />
             </div>
           </div>        
-          : <h1>Not Logged In</h1>
-        }
-      </div>
-      <div>
-        {!token ?
-          <div>
-            <a href={`${AUTH_ENDPOINT}?client_id=${CLIENT_ID}&redirect_uri=${REDIRECT_URI}&scope=${SCOPE}&response_type=${RESPONSE_TYPE}`}>Log In to Spotify</a>
-          </div>
-          : <div></div>
         }
       </div>
     </div>
