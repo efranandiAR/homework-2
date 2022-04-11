@@ -28,7 +28,7 @@ export default function Home() {
 
   const HandleOnSelect = (uri) => {
     if(isSelected.includes(uri)) {
-      setIsSelected((prevIsSelected) => prevIsSelected.filter((item) => item.uri === uri));
+      setIsSelected((prevIsSelected) => prevIsSelected.filter((item) => item !== uri));
     } else if(!isSelected.includes(uri)){
       setIsSelected((prevIsSelected) => [...prevIsSelected, uri]);
     }
@@ -88,7 +88,7 @@ export default function Home() {
 
   const HandleOnSubmitPlaylist = (e) => {
     e.preventDefault();
-    {AddPlaylist()}
+    AddPlaylist();
   }
 
   return(

@@ -1,4 +1,4 @@
-import { React, useState } from "react";
+import { React } from "react";
 import Track from "./Components/Track"
 import { ArtistList } from "./Components/Track/Info";
 
@@ -14,8 +14,9 @@ const Tracks = ({data, HandleOnSelect, isSelected}) => {
                   albumId={e.album.id}
                   album={e.album.name}
                   artist= {<ArtistList artists = {e.artists} />}
-                  HandleOnSelect = {() => (HandleOnSelect(e.uri))}
+                  HandleOnSelect = {HandleOnSelect}
                   isSelected = {isSelected}
+                  uri = {e.uri}
                 />
             </li>
     );
