@@ -1,9 +1,9 @@
 import React from "react";
 
-const SelectButton = ({ HandleOnSelect, isSelected }) => {
+const SelectButton = ({ HandleOnSelect, isSelected, uri }) => {
   return (
-    <button className="Btn-Select" onClick={HandleOnSelect}>
-      {isSelected ? "Select" : "Deselect" }
+    <button className="Btn-Select" onClick={() => HandleOnSelect(uri)}>
+      {isSelected.includes(uri) ? "Deselect" : "Select" }
     </button>
   )};
 

@@ -1,6 +1,6 @@
 import { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { setToken } from "../../token-slice";
+import { setToken } from "../../utilities/redux/token-slice";
 
 export default function LogIn() {
   const CLIENT_ID = "675110b87a764b42b3a51622ddaa8178";
@@ -22,7 +22,7 @@ export default function LogIn() {
         window.location.hash = "";
     }
     dispatch(setToken(tokenSplit));
-  }, [])
+  }, [currentToken, dispatch]);
 
   return (
     <div>

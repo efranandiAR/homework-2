@@ -1,6 +1,4 @@
-import { useState } from "react";
-
-const PlaylistFormComponent = ({ playlist, HandleOnSubmitPlaylist, HandleOnChangePlaylist}) => {
+const PlaylistFormComponent = ({ HandleOnSubmitPlaylist, HandleOnChangePlaylist}) => {
   
   return(
     <form onSubmit={HandleOnSubmitPlaylist}>

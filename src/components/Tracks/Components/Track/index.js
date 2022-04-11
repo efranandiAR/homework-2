@@ -3,7 +3,7 @@ import Picture from "./Album";
 import { Details } from "./Info";
 import SelectButton from "./Button"
 
-const Track = ({ url, titleId, title, albumId, album, artist, HandleOnSelect, isSelected}) => {
+const Track = ({ url, titleId, title, albumId, album, artist, HandleOnSelect, isSelected, uri}) => {
 
   return(
     <div className="SongContainer">
@@ -18,6 +18,7 @@ const Track = ({ url, titleId, title, albumId, album, artist, HandleOnSelect, is
       <SelectButton 
         HandleOnSelect={HandleOnSelect}
         isSelected = {isSelected}
+        uri = {uri}
       />
     </div>
   );

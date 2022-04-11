@@ -7,7 +7,7 @@ const ArtistList = ({artists}) => {
     return ArtistArray;
 }
 
-const Details = ({titleId, title, albumId, album, artist, uri}) => {
+const Details = ({titleId, title, albumId, album, artist}) => {
 
     return (
     <ul className="SongDetails">
