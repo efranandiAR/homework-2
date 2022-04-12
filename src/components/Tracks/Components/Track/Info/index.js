@@ -1,4 +1,5 @@
 import React from "react";
+import styles from "../Track.module.css";
 
 const ArtistList = ({artists}) => {
     const ArtistArray = artists.map((element) =>
@@ -10,10 +11,10 @@ const ArtistList = ({artists}) => {
 const Details = ({titleId, title, albumId, album, artist}) => {
 
     return (
-    <ul className="SongDetails">
-        <li className="SongTitle" key={titleId}>{title}</li>
-        <li className="SongAlbum" key={albumId}> {album}</li>
-        <li className="SongArtists">
+    <ul className={styles.SongDetails}>
+        <li className={styles.SongTitle} key={titleId}>{title}</li>
+        <li className={styles.SongAlbum} key={albumId}> {album}</li>
+        <li className={styles.SongArtists}>
             <ul>{artist}</ul>
         </li>
     </ul>

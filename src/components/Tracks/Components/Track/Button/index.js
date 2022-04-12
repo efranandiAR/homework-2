@@ -1,8 +1,9 @@
 import React from "react";
+import styles from "../Track.module.css";
 
 const SelectButton = ({ HandleOnSelect, isSelected, uri }) => {
   return (
-    <button className="Btn-Select" onClick={() => HandleOnSelect(uri)}>
+    <button className={styles.Btn} onClick={() => HandleOnSelect(uri)}>
       {isSelected.includes(uri) ? "Deselect" : "Select" }
     </button>
   )};

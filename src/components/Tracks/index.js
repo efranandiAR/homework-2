@@ -1,6 +1,7 @@
 import { React } from "react";
 import Track from "./Components/Track"
 import { ArtistList } from "./Components/Track/Info";
+import styles from "./TracksTable.module.css";
 
 
 const Tracks = ({data, HandleOnSelect, isSelected}) => {
@@ -22,7 +23,7 @@ const Tracks = ({data, HandleOnSelect, isSelected}) => {
     );
 
     return(
-      <ul>{List}</ul>  
+      <ul className={styles.TracksTable}>{List}</ul>  
     );
 }
 
