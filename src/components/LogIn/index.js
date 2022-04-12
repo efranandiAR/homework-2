@@ -2,6 +2,8 @@ import { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { setToken } from "../../utilities/redux/token-slice";
 
+import styles from "./LogIn.module.css";
+
 export default function LogIn() {
   const CLIENT_ID = "675110b87a764b42b3a51622ddaa8178";
   const REDIRECT_URI = "http://localhost:3000/";
@@ -25,9 +27,12 @@ export default function LogIn() {
   }, [currentToken, dispatch]);
 
   return (
-    <div>
+    <div className={styles.LogInContainer}>
       <h1>Not Logged In</h1>
-      <a href={`${AUTH_ENDPOINT}?client_id=${CLIENT_ID}&redirect_uri=${REDIRECT_URI}&scope=${SCOPE}&response_type=${RESPONSE_TYPE}`}>Log In to Spotify</a>
+      <a
+        className={styles.Btn} 
+        href={`${AUTH_ENDPOINT}?client_id=${CLIENT_ID}&redirect_uri=${REDIRECT_URI}&scope=${SCOPE}&response_type=${RESPONSE_TYPE}`}>LOGIN
+      </a>
     </div>
   );
 }

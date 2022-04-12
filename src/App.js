@@ -15,7 +15,6 @@ function App() {
         <div className="Container">
           <RoutePages />
         </div>
-        <footer></footer>
       </div>
     </Provider>
   );

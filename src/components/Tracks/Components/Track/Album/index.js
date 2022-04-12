@@ -1,9 +1,10 @@
 import React from "react";
+import styles from "../Track.module.css";
 
 const Picture = ({url}) => (
     <img
         src={url}
-        className="AlbumPicture"
+        className={styles.AlbumPicture}
         alt=''
     />
 );

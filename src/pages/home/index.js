@@ -1,15 +1,16 @@
 import { useState } from "react";
 import axios from "axios";
 import Tracks from "../../components/Tracks";
-import PlaylistFormComponent from "../../components/PlaylistForm";
 import { useSelector } from "react-redux";
+import SearchTracks from "../../components/Search/Index";
+import PlaylistForm from "../../components/PlaylistForm";
 
 export default function Home() {
   const currentToken = useSelector((state) => state.token.value);
   const [searchKey, setSearchKey] = useState("");
   const [tracks, setTracks] = useState([]);
   
-  const searchTracks = async (e) => {
+  const HandleOnSubmitSearch = async (e) => {
     e.preventDefault()
     const {data} = await axios.get("https://api.spotify.com/v1/search", {
       headers: {
@@ -22,6 +23,10 @@ export default function Home() {
     })
 
     setTracks(data.tracks.items);
+  }
+
+  const HandleOnChangeSearch = (e) => {
+    setSearchKey(e.target.value);
   }
   // -----------------------------------------------------------------------------------------------
   const [isSelected, setIsSelected] = useState([]);
@@ -42,7 +47,6 @@ export default function Home() {
   const HandleOnChangePlaylist = (e) => {
     const { name, value } = e.target;
     setPlaylist({...playlist, [name]: value });
-    console.log(playlist);
   }
 
   const AddPlaylist = async (e) => {
@@ -92,31 +96,23 @@ export default function Home() {
   }
 
   return(
-    <div>
-      <div>
-        {
-          <div>
-            <div>
-              <PlaylistFormComponent 
+          <>
+              <PlaylistForm
                 playlist={playlist}
                 HandleOnChangePlaylist={HandleOnChangePlaylist}
                 HandleOnSubmitPlaylist={HandleOnSubmitPlaylist}
               />
-            </div>
-            <form onSubmit={searchTracks}>
-              <input type="text" onChange={e => setSearchKey(e.target.value)}/>
-              <button type={"submit"}>Search</button>
-            </form>
-            <div>
+              <SearchTracks
+                HandleOnChangeSearch={HandleOnChangeSearch} 
+                HandleOnSubmitSearch={HandleOnSubmitSearch}
+              />
+            <>
               <Tracks 
                 data={tracks}
                 HandleOnSelect={HandleOnSelect}
                 isSelected = {isSelected}
               />
-            </div>
-          </div>        
-        }
-      </div>
-    </div>
+            </>
+          </>        
   );
 };

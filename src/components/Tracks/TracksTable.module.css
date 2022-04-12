@@ -1,0 +1,8 @@
+.TracksTable {
+  display: grid;
+  grid-template-columns: 500px 500px;
+}
+
+li {
+  margin: 0 12px 12px 0;
+}
