@@ -21,7 +21,7 @@ export default function Home() {
         type: "track"
       }
     })
-
+    console.log(data, "data");
     setTracks(data.tracks.items);
   }
 
