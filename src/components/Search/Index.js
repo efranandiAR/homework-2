@@ -1,21 +1,34 @@
 import styles from "./Search.module.css"
+import { Flex, Input, Button } from '@chakra-ui/react'
+import { Search2Icon } from "@chakra-ui/icons"
 
 const SearchTracks = ({HandleOnSubmitSearch, HandleOnChangeSearch}) => {
 
   return(
-    <div className={styles.SearchBarContainer}>
-      <form
+      <Flex
+        className={styles.SearchBarContainer} 
+        align="center"
+        justify="center"
+      >
+        <form
         className={styles.SearchBarForm}
         onSubmit={HandleOnSubmitSearch}>
-        <input 
-          className={styles.SearchInput} 
-          type="text" 
-          onChange={HandleOnChangeSearch}
-          placeholder="Search for a song, artist, or album"
-        />
-        <button className={styles.Btn} type={"submit"}>SEARCH</button>
+          <Input 
+            className={styles.SearchInput}
+            variant='filled'
+            width='auto' 
+            onChange={HandleOnChangeSearch}
+            placeholder="Search for a song, artist, or album"
+          />
+        <Button 
+          className={styles.Btn}
+          onClick={HandleOnSubmitSearch}
+        >
+          <Search2Icon />
+        </Button>
+        {/* <button className={styles.Btn} type={"submit"}>SEARCH</button> */}
       </form>
-    </div>
+      </Flex>
   )
 }
 
