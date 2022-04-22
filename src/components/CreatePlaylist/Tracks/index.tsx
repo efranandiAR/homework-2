@@ -2,7 +2,7 @@
 import Track from "./Components/Track"
 import { ArtistList } from "./Components/Track/Info";
 import styles from "./TracksTable.module.css";
-import { Item } from "../../utilities/tsxModule/tracks"
+import { Item } from "../../../utilities/tsxModule/tracks"
 import { Key } from "react";
 
 interface Props {

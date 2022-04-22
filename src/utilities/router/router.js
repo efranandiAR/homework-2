@@ -5,8 +5,8 @@ import {
   Redirect
 } from "react-router-dom"
 import { useSelector } from "react-redux";
-import Home from "../../pages/home";
-import LogIn from "../../components/LogIn";
+import LogIn from "../../pages/LogIn";
+import CreatePlaylist from "../../pages/CreatePlaylist";
 
 function App() {
   const currentToken = useSelector((state) => state.token.value);
@@ -16,7 +16,7 @@ function App() {
       <Switch>
         <Route path="/create-playlist">
           { currentToken ? 
-            <Home /> 
+            <CreatePlaylist /> 
             : <Redirect to="/" /> 
           }
         </Route>

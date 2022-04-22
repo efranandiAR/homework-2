@@ -1,11 +1,11 @@
 import { useState } from "react";
 import axios from "axios";
-import Tracks from "../../components/Tracks";
+import Tracks from "../../components/CreatePlaylist/Tracks";
 import { useSelector } from "react-redux";
-import SearchTracks from "../../components/Search/Index";
-import PlaylistForm from "../../components/PlaylistForm";
+import SearchTracks from "../../components/CreatePlaylist/Search/Index";
+import PlaylistForm from "../../components/CreatePlaylist/PlaylistForm";
 
-export default function Home() {
+export default function CreatePlaylist() {
   const currentToken = useSelector((state) => state.token.value);
   const [searchKey, setSearchKey] = useState("");
   const [tracks, setTracks] = useState([]);
@@ -67,7 +67,6 @@ export default function Home() {
 							name: playlist.title,
 							description: playlist.description,
 							public: false,
-              collaborative: false,
 						},
 						{
 							headers: {
@@ -76,6 +75,7 @@ export default function Home() {
 						}
 					)
 					.then(function (response) {
+            console.log("playlistResponse", response);
 						axios.post(
 							`https://api.spotify.com/v1/playlists/${response.data.id}/tracks`,
 							{ uris: uris },
