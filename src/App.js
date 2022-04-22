@@ -2,24 +2,33 @@ import { Provider } from 'react-redux';
 import store from './utilities/redux/store';
 import './App.css';
 import { RoutePages } from './utilities/router/router';
-import { ChakraProvider } from '@chakra-ui/react';
+import { 
+  Flex,
+  Heading 
+} from '@chakra-ui/react';
+
 
 function App() {
   return (
-    <ChakraProvider>
       <Provider store={store}>
         <div className="App">
           <header className="App-header">
-            <div className="App-title">
-              <h1>MockUptify</h1>
-            </div>
+            <Flex 
+              color='white'
+              px={18} py={18}
+            >
+              <Heading as="h1" size="lg">MockUptify</Heading>
+            </Flex>
           </header>
-          <div className="Container">
+          <Flex
+            direction='column'
+            align='center'
+            justify='center'
+          >
             <RoutePages />
-          </div>
+          </Flex>
         </div>
       </Provider>
-    </ChakraProvider>
   );
 }
 
