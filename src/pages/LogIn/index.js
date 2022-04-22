@@ -7,7 +7,7 @@ import {
 
 export default function LogIn() {
   const CLIENT_ID = "675110b87a764b42b3a51622ddaa8178";
-  const REDIRECT_URI = "http://localhost:3000/";
+  const REDIRECT_URI = "https://efranandi-fe-final-project-nu.vercel.app/";
   const SCOPE = "playlist-modify-private";
   const AUTH_ENDPOINT = "https://accounts.spotify.com/authorize";
   const RESPONSE_TYPE = "token";
